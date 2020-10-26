@@ -13,7 +13,9 @@ app.get('/', (req, res) => {
 app.get('/login',(req,res)=>{
     res.render('loginview');
 });
-
+app.get('/register_layout',(req,res)=>{
+    res.render('register_layout');
+});
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
   });

@@ -1,0 +1,29 @@
+extends ./layout/layout
+
+block content
+//head
+    //- style 
+    //- table background-color: #fff;
+//- body
+form(method="post" action="#")
+    table 
+        tr
+            td Username 
+            td 
+                input(type="text" name="username")
+        tr 
+            td Fullname 
+            td 
+                input(type="text" name="fullname")
+        tr 
+            td Password 
+            td 
+                input(type="password" name="password")
+        tr 
+            td Confirm password 
+            td 
+                input(type="password" name="confirm-password")
+        tr 
+            td
+            td
+                input(type="submit" value="Register")

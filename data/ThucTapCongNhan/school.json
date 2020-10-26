@@ -1,0 +1,4 @@
+{ "_id" : { "$oid" : "5f9673865b609f65cf7bc010" }, "id_school" : "DUT", "name" : "Trường Đại học Bách khoa - Đại học Đà Nẵng", "address" : "54 Nguyễn Lương Bằng, Hòa Khánh Bắc, Liên Chiểu, Đà Nẵng", "num_of_rating" : 5.0, "rating" : 4.0 }
+{ "_id" : { "$oid" : "5f9673ce5b609f65cf7bc011" }, "id_school" : "DTU", "name" : "Trường Đại học Duy Tân", "address" : "254 Nguyễn Văn Linh, Thạc Gián, Thanh Khê, Đà Nẵng", "num_of_rating" : 5.0, "rating" : 4.0 }
+{ "_id" : { "$oid" : "5f96740c5b609f65cf7bc012" }, "id_school" : "DUE", "name" : "Trường Đại học Kinh tế - Đại học Đà Nẵng", "address" : "71 Ngũ Hành Sơn, Đà Nẵng", "num_of_rating" : 3.5, "rating" : 4.0 }
+{ "_id" : { "$oid" : "5f96745b5b609f65cf7bc013" }, "id_school" : "UED", "name" : "Trường Đại học Sư phạm - Đại học Đà Nẵng", "address" : "459 Tôn Đức Thắng, Hòa Khánh Nam, Liên Chiểu, Đà Nẵng", "num_of_rating" : 5.0, "rating" : 4.0 }

@@ -23,6 +23,8 @@ html
 								path(fill-rule='evenodd', d='M2 15v-1c0-1 1-4 6-4s6 3 6 4v1H2zm6-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z')
 				if user
 					h5=user.name
-
+				if signup
+					a(href="/login/signup")
+						h5 SIGN UP
 		.container
 			block content	

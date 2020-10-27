@@ -1,16 +1,37 @@
 extends ../layout/layout
 
 block content
-    h1.text-center WELCOME
+    h1.text-center 
+        span WELCOME
+        span &emsp;
+        span=user.name
     .col-sm-12
         form(action='/user/search',method = 'POST')
             .form-group.row
-                input(type='text',name='query').form-control.col-sm-10
+                input(type='text',name='query',placeholder="What do you want to find?").form-control.col-sm-10
                 .col-sm-2
                     button(type='submit').btn.btn-primary
                         svg.bi.bi-search(width='1.5em', height='1.5em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
                             path(fill-rule='evenodd', d='M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z')
                             path(fill-rule='evenodd', d='M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z')
+    .card.border-dark.mt-5
+        .card-header
+            .row
+                .col-sm-5
+                    h5.card-subtitle=user.name
+                .col-sm-4
+                .col-sm-3.row
+                    label(for="school").col-sm-3.mt-1 FOR
+                    input(type="text",placeholder="DUT?").form-control.col-sm-9#school
+        .card-body
+            .row
+                .col-sm-12
+                    textarea(rows="5",placeholder="How are you today?").form-control
+            p
+            .row
+                .col-sm-10
+                .col-sm-2
+                    button.btn.btn-info POST                                
     if list
         each con in list
             div.card.border-dark.mt-5
@@ -21,26 +42,13 @@ block content
                                 span User:
                                 span &emsp;
                                 span=con.name
-                            h5.card-subtitle
+                            h5.card-subtitle.mt-1
                                 span Date:
                                 span &emsp;
                                 span=con.time_post
                         .col-sm-3
                         .col-sm-2.text-right
-                            h4.card-subtitle=con.id_school
-                        if admin
-                            .col-sm-2
-                                a(href='#').text-success.mr-3.ml-2
-                                    svg.bi.bi-check-circle-fill(width='2em', height='2em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
-                                        path(fill-rule='evenodd', d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z')
-                                a(href='#').text-danger.mr-3
-                                    svg.bi.bi-x-circle-fill(width='2em', height='2em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
-                                        path(fill-rule='evenodd', d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z')
-                                a(href='#').text-warning
-                                    svg.bi.bi-pencil-square(width='2em', height='2em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
-                                        path(d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z')
-                                        path(fill-rule='evenodd', d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z')
-
+                            h4.card-subtitle.mt-1=con.id_school
                 div.card-body
                     p                       
                     .row.card-text

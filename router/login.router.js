@@ -6,7 +6,7 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/signup',(req,res)=>{
-    res.send('HELLO');
+    res.render('./login/signup');
 });
 
 module.exports = router;

@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = 5000;
 
+var Database = require('./models/database');
+
 app.use(express.static('public'));
 app.set('view engine','pug');
 app.set('views','./public/views');

@@ -1,6 +1,12 @@
-const express = require('express');
-const app = express();
-const port = 5000;
+var express = require('express');
+var app = express();
+var port = 5000;
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+const Database = require('./models/database');
 
 app.use(express.static('public'));
 app.set('view engine','pug');
@@ -14,11 +20,10 @@ app.get('/', (req, res) => {
     res.render('view1');
 });
 
-
-
 app.use('/login',loginRouter);
 app.use('/user',userRouter);
 app.use('/admin',adminRouter);
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
   });

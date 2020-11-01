@@ -1,0 +1,16 @@
+.lightbox
+{
+	position:fixed;
+	z-index:99;
+    display:none;
+	width:40%;
+	height:60%;
+	top: 10%;
+	left:50%;
+	background:rgb(0,0,0,1);
+	border-radius: 50px;
+}
+.hide
+{
+    display: none;
+}

@@ -12,6 +12,10 @@ block content
 		.form-group.row
 			label(for="mail").col-sm-2 MAIL
 			input(type="text",name="mail",value=values?values.mail:"").form-control.col-sm-10#mail
+		if mail_found
+			.form-group.row
+				.col-sm-2
+				h5=mail_found
 		.form-group.row
 			label(for="phone").col-sm-2 PHONE NUMBER
 			input(type="text",name="phone",value=values?values.phone:"").form-control.col-sm-10#phone
@@ -24,6 +28,10 @@ block content
 		.form-group.row
 			label(for="name").col-sm-2 ACCOUNT NAME
 			input(type="text",name="name",value=values?values.name:"").form-control.col-sm-10#name
+		if found
+			.form-group.row
+				.col-sm-2
+				h5=found
 		.form-group.row
 			label(for="pass").col-sm-2 PASS
 			input(type="password", name="pass",value=values?values.pass:"").form-control.col-sm-10#pass

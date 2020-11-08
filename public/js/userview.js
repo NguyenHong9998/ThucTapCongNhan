@@ -15,7 +15,7 @@ for(let i = 0;i<num;i++){
             let text = light.find('.text-com').val();
             if(text){
                 axios.post('/comment/post',{data:text,_id:id}).then();
-                light.find('.text-res').append("Anh Tue:  "+text+"\n");
+                light.find('.text-res').append("Anh Tue:  "+text+"\n"); // user Anh Tue
                 light.find('.text-com').attr("value","");
             }
         });
@@ -29,7 +29,7 @@ for(let i = 0;i<num;i++){
         axios.get('/comment/'+id).then(function(res) {
             let data = res.data;
             data.forEach(element => {
-                light.find('.text-res').append(element+'\n');
+                light.find('.text-res').append('<p>'+element+'</p>');
             });
         });
     });

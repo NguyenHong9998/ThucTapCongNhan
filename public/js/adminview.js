@@ -1,9 +1,15 @@
 var num = $('.content').toArray().length;
+let light = $('.lightbox');
+light.find('.com-exit').click(function(){
+    light.removeClass('animate__rotateInDownLeft');
+    light.addClass('animate__rotateOutDownLeft');            
+});
 for(let i = 0;i<num;i++){
     let con = $('.content').eq(i);
     let user = con.find('.ct-name').text();
     let date = con.find('.ct-date').text();
     let school = con.find('.ct-school').text();
+    let id = con.find('.ct-id').text();
     con.find('.editing').click(function(){
         let data = con.find('.data').text();
         con.find('.data').remove();
@@ -23,16 +29,25 @@ for(let i = 0;i<num;i++){
         });
     });
     con.find('.com-but').click(function(){
-        let light = $('.lightbox');
+        light.find('.post-com').click(function(){
+            let text = light.find('.text-com').val();
+            if(text){
+                axios.post('/comment/post',{data:text,_id:id}).then();
+                light.find('.text-res').append("ADMIN:  "+text+"\n"); // user ADMIN
+                light.find('.text-com').attr("value","");
+            }
+        });
         light.find('.com-name').html(user);
         light.find('.com-date').html(date);
         light.find('.com-school').html(school);
-        light.find('.com-exit').click(function(){
-            light.removeClass('animate__animated animate__rotateInDownLeft');
-            light.addClass('animate__animated animate__rotateOutDownLeft');            
-        });
         light.show();
-        light.removeClass('animate__animated animate__rotateOutDownLeft');
-        light.addClass('animate__animated animate__rotateInDownLeft');
+        light.removeClass('animate__rotateOutDownLeft');
+        light.addClass('animate__rotateInDownLeft');
+        axios.get('/comment/'+id).then(function(res) {
+            let data = res.data;
+            data.forEach(element => {
+                light.find('.text-res').append('<p>'+element+'</p>');
+            });
+        });
     });
 }

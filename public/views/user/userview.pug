@@ -1,19 +1,24 @@
 extends ../layout/layout
 
 block content
-    h1.text-center 
-        span WELCOME
-        span &emsp;
-        span=user.name
-    .col-sm-12
-        form(action='/user/search',method = 'POST')
-            .form-group.row
-                input(type='text',name='query',placeholder="What do you want to find?").form-control.col-sm-10
+    div.header
+        .div.box-header
+            h1.text-center.text-dark.text-header 
+                span WELCOME
+                span &emsp;
+                span=user.name
+            .row
                 .col-sm-2
-                    button(type='submit').btn.btn-primary
-                        svg.bi.bi-search(width='1.5em', height='1.5em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
-                            path(fill-rule='evenodd', d='M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z')
-                            path(fill-rule='evenodd', d='M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z')
+                .col-sm-8.ml-1
+                    form(action='/user/search',method = 'POST')
+                        .form-group.row
+                            input(type='text',name='query',placeholder="What do you want to find?").form-control.col-sm-11
+                            .col-sm-1.text-right
+                                button(type='submit').btn.btn-primary
+                                    svg.bi.bi-search(width='1.5em', height='1.5em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
+                                        path(fill-rule='evenodd', d='M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z')
+                                        path(fill-rule='evenodd', d='M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z')
+                .col-sm-2
     form(action='user/post',method = 'POST')
         .card.border-dark.mt-5
             .card-header
@@ -79,8 +84,7 @@ block content
                             svg.bi.bi-x-circle-fill(width='2em', height='2em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
                                 path(fill-rule='evenodd', d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z')
             .card-body
-                .col-sm-12
-                    textarea(rows="14",disabled=true).form-control.text-res
+                .col-sm-12.text-res
             .card-footer
                 .col-sm-12
                     .row

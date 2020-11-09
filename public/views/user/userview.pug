@@ -55,16 +55,17 @@ block content
                         .col-sm-5
                         .col-sm-2.text-center
                             h4.card-subtitle.mt-1.ct-school=con.id_school
-                div.card-body
-                    p                       
-                    .row.card-text
-                        .col-sm-12
-                            p=con.content
-                    p
-                    .row
-                        .col-sm-10
-                        .col-sm-2
-                            button.btn.btn-info.com-but Comment
+                div.card-body.for-back-img
+                    .blur
+                        p                       
+                        .row.card-text
+                            .col-sm-12
+                                p=con.content
+                        p
+                        .row
+                            .col-sm-10
+                            .col-sm-2
+                                button.btn.btn-info.com-but Comment
                 .card-footer
                     p.ct-id(style="display:none;")=con._id
     include ../layout/footer.pug

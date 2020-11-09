@@ -28,6 +28,10 @@
 	margin-left: -11%;
 	padding-top: 15%;
 }
+.for-back-img{
+	background-image:url(../../img/back4.jpg);
+	background-size: cover;
+}
 .put-com-session{
 	position: absolute;
 	width: 100%;

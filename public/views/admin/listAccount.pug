@@ -1,0 +1,34 @@
+extends ./layout/layout
+block content 
+    head
+        title Danh sach tai khoan
+    body   
+        form(name="f1",method="post")
+            input(type="hidden",name="id",value="")
+            header.text-danger.text-center
+                h1.text-center
+                    caption Danh sách các tài khoản trong hệ thống 
+            table(class='table table-dark' style='width:100%', border='1')
+                tr
+                    
+                        th Id
+                        th Name
+                        th Email
+                        th
+                each us in list
+                        tr          
+                                    
+                                    td.id=us._id
+                                    td=us.name
+                                    td=us.mail
+                                    td
+                                        button(class="btn btn-danger" type="button" onclick="xoaIDnguoidung('"+us._id+"')") Delete       
+            script(src='/js/userview.js')                
+                            
+
+                    
+            
+                    
+
+
+    

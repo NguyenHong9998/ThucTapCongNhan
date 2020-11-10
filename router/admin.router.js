@@ -69,4 +69,38 @@ router.get('/checkuser',(req,res)=>{
     ];
     res.render('./admin/checkuser',{user:user,list:list_content,admin:true});
 });
+router.get('/deleteuser',(req,res)=>{
+    var user = {
+        name:"Admin"
+    };
+    var list_content = [
+        {
+            _id: "idforAnhTue1111111",
+            name: "Anh Tue",
+            mail: "tueleesin@gmail.com",
+            phone: "0335062007",
+            job: "SV",
+            office: "DUT",
+            isChecked: false,
+            name_acc: "tueproha"
+        },
+        {
+            _id: "idforAnhTue2222222",
+            name: "Anh Tue 22",
+            mail: "tueleesin22@gmail.com",
+            phone: "0335062022",
+            job: "SV2",
+            office: "UEH",
+            isChecked: false,
+            name_acc: "tueproha22"
+        }
+    ];
+    res.render('./admin/listAccount',{user:user,list:list_content,admin:true});
+});
+router.post('/deleteuser',(req,res)=>{
+    var id = req.body.id; // id cua bai viet de tim comment
+    console.log("da nhan roi: "+id);
+    res.redirect('/admin/deleteuser');
+    //res.json(com);
+});
 module.exports = router;

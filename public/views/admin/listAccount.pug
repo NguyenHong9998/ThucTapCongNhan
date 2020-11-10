@@ -1,4 +1,4 @@
-extends ./layout/layout
+extends ../layout/layout
 block content 
     head
         title Danh sach tai khoan
@@ -23,7 +23,7 @@ block content
                                     td=us.mail
                                     td
                                         button(class="btn btn-danger" type="button" onclick="xoaIDnguoidung('"+us._id+"')") Delete       
-            script(src='/js/userview.js')                
+            script(src='../js/listAccount.js')                
                             
 
                     

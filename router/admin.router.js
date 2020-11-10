@@ -69,7 +69,7 @@ router.get('/checkuser',(req,res)=>{
     ];
     res.render('./admin/checkuser',{user:user,list:list_content,admin:true});
 });
-router.get('/deleteuser',(req,res)=>{
+router.get('/deleteuserview',(req,res)=>{
     var user = {
         name:"Admin"
     };
@@ -97,10 +97,10 @@ router.get('/deleteuser',(req,res)=>{
     ];
     res.render('./admin/listAccount',{user:user,list:list_content,admin:true});
 });
-router.post('/deleteuser',(req,res)=>{
-    var id = req.body.id; // id cua bai viet de tim comment
-    console.log("da nhan roi: "+id);
-    res.redirect('/admin/deleteuser');
-    //res.json(com);
+router.get('/deleteuser/:id',(req,res)=>{
+    var id = req.params.id; // id cua bai viet de tim comment
+    //console.log("da nhan roi: "+id);
+    res.send(id);
+    
 });
 module.exports = router;

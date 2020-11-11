@@ -45,62 +45,107 @@ router.get('/checkuser',(req,res)=>{
     var user = {
         name:"Admin"
     };
-    var list_content = [
-        {
-            _id: "idforAnhTue1111111",
-            name: "Anh Tue",
-            mail: "tueleesin@gmail.com",
-            phone: "0335062007",
-            job: "SV",
-            office: "DUT",
-            isChecked: false,
-            name_acc: "tueproha"
-        },
-        {
-            _id: "idforAnhTue2222222",
-            name: "Anh Tue 22",
-            mail: "tueleesin22@gmail.com",
-            phone: "0335062022",
-            job: "SV2",
-            office: "UEH",
-            isChecked: false,
-            name_acc: "tueproha22"
+    var list_content = [];
+    var account = require('../models/account.model');
+    var usermodel = require('../models/user.model');
+    usermodel.find({isChecked:false}, (err, kq) => {
+        if (err) {
+        console.log("Loi roi ban oi");
+        res.render('./login/signup');
         }
-    ];
-    res.render('./admin/checkuser',{user:user,list:list_content,admin:true});
+        else if (!kq) {
+            res.render('./admin/checkuser',{user:user,admin:true});
+            
+        }
+        else {
+            kq.forEach(element => {
+              //console.log(element);  
+              list_content.push(element);
+            });
+            console.log
+            res.render('./admin/checkuser',{user:user,list:list_content,admin:true});
+        }    
+    });
 });
 router.get('/deleteuserview',(req,res)=>{
     var user = {
         name:"Admin"
     };
-    var list_content = [
-        {
-            _id: "idforAnhTue1111111",
-            name: "Anh Tue",
-            mail: "tueleesin@gmail.com",
-            phone: "0335062007",
-            job: "SV",
-            office: "DUT",
-            isChecked: false,
-            name_acc: "tueproha"
-        },
-        {
-            _id: "idforAnhTue2222222",
-            name: "Anh Tue 22",
-            mail: "tueleesin22@gmail.com",
-            phone: "0335062022",
-            job: "SV2",
-            office: "UEH",
-            isChecked: false,
-            name_acc: "tueproha22"
+    var list_content = [];
+    var account = require('../models/account.model');
+    var usermodel = require('../models/user.model');
+    usermodel.find({isChecked:true}, (err, kq) => {
+        if (err) {
+        console.log("Loi roi ban oi");
+        res.render('./login/signup');
         }
-    ];
-    res.render('./admin/listAccount',{user:user,list:list_content,admin:true});
+        else if (!kq) {
+            res.render('./admin/listAccount',{user:user,admin:true});
+            
+        }
+        else {
+            kq.forEach(element => {
+              //console.log(element);  
+              list_content.push(element);
+            });
+            console.log
+            res.render('./admin/listAccount',{user:user,list:list_content,admin:true});
+        }    
+    });
+});
+router.get('/add-user/:id',(req,res)=>{
+    var id = req.params.id; 
+    var user = require('../models/user.model');
+    user.findByIdAndUpdate(id,{isChecked:true}, function (err, kq) { 
+        if (err){ 
+            console.log(err) 
+        } 
+        else{ 
+            //console.log("Removed User : ", docs); 
+            res.redirect('/admin/checkuser');
+        } 
+    }); 
+});
+router.get('/del-user/:id',(req,res)=>{
+    var id = req.params.id; 
+    var account = require('../models/account.model');
+    var user = require('../models/user.model');
+    user.findByIdAndRemove(id, function (err, kq) { 
+        if (err){ 
+            console.log(err) 
+        } 
+        else{ 
+            //console.log("Removed User : ", docs); 
+            account.deleteMany({name:kq.name_acc}, function (err, result) { 
+                if (err){ 
+                    console.log(err) 
+                }else{ 
+                    //console.log("Result :", result)  
+                } 
+            }); 
+            res.redirect('/admin/checkuser');
+        } 
+    }); 
 });
 router.get('/deleteuser/:id',(req,res)=>{
-    var id = req.params.id; // id cua bai viet de tim comment
-    //console.log("da nhan roi: "+id);
-    res.send(id);
-    
+    var id = req.params.id; 
+    var account = require('../models/account.model');
+    var user = require('../models/user.model');
+    user.findByIdAndRemove(id, function (err, kq) { 
+        if (err){ 
+            console.log(err) 
+        } 
+        else{ 
+            //console.log("Removed User : ", docs); 
+            account.deleteMany({name:kq.name_acc}, function (err, result) { 
+                if (err){ 
+                    console.log(err) 
+                }else{ 
+                    //console.log("Result :", result)  
+                } 
+            });  
+            res.redirect('/admin/deleteuserview');
+        } 
+    }); 
 });
 module.exports = router;

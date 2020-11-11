@@ -33,7 +33,7 @@ for(let i = 0;i<num;i++){
             let text = light.find('.text-com').val();
             if(text){
                 axios.post('/comment/post',{data:text,_id:id}).then();
-                light.find('.text-res').append("ADMIN:  "+text+"\n"); // user ADMIN
+                light.find('.text-res').append("<p>ADMIN:  "+text+"</p>"); // user ADMIN
                 light.find('.text-com').attr("value","");
             }
         });

@@ -15,7 +15,7 @@ for(let i = 0;i<num;i++){
             let text = light.find('.text-com').val();
             if(text){
                 axios.post('/comment/post',{data:text,_id:id}).then();
-                light.find('.text-res').append("Anh Tue:  "+text+"\n"); // user Anh Tue
+                light.find('.text-res').append("<p>Anh Tue:  "+text+"</p>"); // user Anh Tue
                 light.find('.text-com').attr("value","");
             }
         });

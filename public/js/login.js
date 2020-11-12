@@ -13,3 +13,6 @@ function xuly() {
     document.f1.submit();
   }
 }
+function xuly2(){
+  window.location.href="/login/signup";
+}

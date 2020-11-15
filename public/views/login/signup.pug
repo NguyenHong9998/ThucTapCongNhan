@@ -1,49 +1,53 @@
 extends ../layout/layout
 
 block content
-	h1.text-center.text-center.text-white SIGN UP
-	if errors
-		each error in errors
-			.alert.alert-danger= error
-	form(name="f1", method="POST")
-		.form-group.row
-			label(for="fullname").col-sm-2 FULL NAME
-			input(type="text",name="fullname",value=values?values.fullname:"").form-control.col-sm-10#fullname
-		.form-group.row
-			label(for="mail").col-sm-2 MAIL
-			input(type="text",name="mail",value=values?values.mail:"").form-control.col-sm-10#mail
-		if mail_found
-			.form-group.row
-				.col-sm-2
-				h5=mail_found
-		.form-group.row
-			label(for="phone").col-sm-2 PHONE NUMBER
-			input(type="text",name="phone",value=values?values.phone:"").form-control.col-sm-10#phone
-		.form-group.row
-			label(for="job").col-sm-2 JOB
-			input(type="text",name="job",value=values?values.job:"").form-control.col-sm-10#job
-		.form-group.row
-			label(for="office").col-sm-2 OFFICE
-			input(type="text",name="office",value=values?values.office:"").form-control.col-sm-10#office
-		.form-group.row
-			label(for="name").col-sm-2 ACCOUNT NAME
-			input(type="text",name="name",value=values?values.name:"").form-control.col-sm-10#name
-		if found
-			.form-group.row
-				.col-sm-2
-				h5=found
-		.form-group.row
-			label(for="pass").col-sm-2 PASS
-			input(type="password", name="pass",value=values?values.pass:"").form-control.col-sm-10#pass
-		.form-group.row
-			label(for="retype_pass").col-sm-2 RETYPE PASS
-			input(type="password", name="retype_pass",value=values?values.pass:"").form-control.col-sm-10#retype_pass
-		.row
-			.col-sm-5
-			.col-sm-2
-				button(type="button" onclick="xuly()").btn.btn-primary SIGN UP
-					svg.bi.bi-person-plus-fill.ml-2(width='2em', height='2em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
-						path(fill-rule='evenodd', d='M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z')
+	.row
+		.col-sm-4
+		.col-sm-4.box-signup
+			h3.text-center.text-center.text-white SIGN UP
+			if errors
+				each error in errors
+					.alert.alert-danger= error
+			form(name="f1", method="POST")
+				.form-group.row
+					input(class= "form-control" ,type="text",name="name",value=values?values.name:"",placeholder="Full Name").form-control
+				.form-group.row
+					input(class= "form-control" ,type="text",name="mail",value=values?values.mail:"",placeholder="Email").form-control
+
+				if mail_found
+					.form-group.row
+						.col-sm-2
+						h5=mail_found
+				.form-group.row
+			
+					input(class= "form-control" ,type="text",name="phone",value=values?values.phone:"",placeholder="Phone Number").form-control
+				.form-group.row
+				
+					input(class= "form-control" ,type="text",name="job",value=values?values.job:"",placeholder="Job").form-control
+				.form-group.row
+				
+					input(class= "form-control" ,type="text",name="office",value=values?values.office:"",placeholder="Office").form-control
+				.form-group.row
+		
+					input(class= "form-control" ,type="text",name="name",value=values?values.name:"",placeholder="Account Name").form-control
+				if found
+					.form-group.row
+						.col-sm-2
+						h5=found
+				.form-group.row
+			
+					input(class= "form-control" ,type="text",name="pass",value=values?values.pass:"",placeholder="Password").form-control
+
+				.form-group.row
+					input(class= "form-control" ,type="text",name="retype_pass",value=values?values.pass:"",placeholder="Confirm your password").form-control
+
+				.row
+					.col-sm-3
+					.col-sm-7
+						button(type="button" onclick="xuly()").btn.btn-primary SIGN UP
+							svg.bi.bi-person-plus-fill.ml-2(width='2em', height='2em', viewbox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
+								path(fill-rule='evenodd', d='M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z')
+	
 	script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
 	script(src='/js/signup.js')
 	link(rel="stylesheet",href="../css/signup.css",media="screen")

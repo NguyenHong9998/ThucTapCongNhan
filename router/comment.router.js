@@ -1,10 +1,21 @@
 const express = require('express');
+const { post } = require('./user.router');
 const router = express.Router();
 
 router.get('/:id',(req,res)=>{
-    let id = req.params.id; // id cua bai viet de tim comment
-    let com = ["Mai Thi:  dghsadhshakdas","Anh tue:  hdjshdjkas","Mai Thi:  dghsadhshakdas","Anh tue:  hdjshdjkas","Mai Thi:  dghsadhshakdas","Anh tue:  hdjshdjkas","Mai Thi:  dghsadhshakdas","Anh tue:  hdjshdjkas","Mai Thi:  dghsadhshakdas","Anh tue:  hdjshdjkas","Mai Thi:  dghsadhshakdas","Anh tue:  hdjshdjkas","Mai Thi:  dghsadhshakdas","Anh tue:  hdjshdjkas","Mai Thi:  dghsadhshakdas","Anh tue:  hdjshdjkas"]; //comment mau
-    res.json(com);
+    let id = req.params.id; 
+    var postModel = require("../models/post.model");
+    postModel.findById(id,(err,kq)=>{
+        if (err){
+            console.log("Co loi");
+        }
+        else {
+            let listComment = kq.comments;
+            res.json(listComment);
+        }
+    });
+   
+    
 });
 router.post('/post',(req,res)=>{
     console.log(req.body);

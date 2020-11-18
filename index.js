@@ -9,7 +9,11 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
-app.use(session({secret: "Shh, its a secret!"}));
+app.use(session({
+    secret: "kjfdbnkjvnbfdjklbvkljsdbklvjfbdskljvbdskjvbdfksjlbkljbljkbkj",
+    cookie :{maxAge:60000
+    }
+}));
 const Database = require('./models/database');
 
 app.use(express.static('public'));

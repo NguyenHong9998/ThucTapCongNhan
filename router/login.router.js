@@ -27,13 +27,14 @@ router.post('/',(req,res)=>{
                 else {
                     if (kq.name=="admin") {
                         req.session.admin = {
-                            user:values.name,
+                            username:values.name,
+                            
                         }
                         res.redirect('/admin');
                     }
                     else {
                         req.session.user = {
-                            user:values.name,
+                            username:values.name,
                         }
                         res.redirect('/user');
                     }

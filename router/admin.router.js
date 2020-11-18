@@ -5,6 +5,7 @@ router.get('/',(req,res)=>{
     var user = {
         name:"Admin"
     };
+    console.log(req.session.user)
     var list_content = [
         {
             _id: "idforAnhTue1111111",

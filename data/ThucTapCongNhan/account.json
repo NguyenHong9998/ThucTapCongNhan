@@ -1,4 +1,15 @@
-{ "_id" : { "$oid" : "5f8fddd4aafb73522b98dfc4" }, "name" : "nguyenhong99", "pass" : "827ccb0eea8a706c4c34a16891f84e7b", "check_admin" : false }
-{ "_id" : { "$oid" : "5f8fddf0aafb73522b98dfc5" }, "name" : "quanghung99", "pass" : "827ccb0eea8a706c4c34a16891f84e7b", "check_admin" : false }
-{ "_id" : { "$oid" : "5f8fddfdaafb73522b98dfc6" }, "name" : "anhtue99", "pass" : "827ccb0eea8a706c4c34a16891f84e7b", "check_admin" : false }
-{ "_id" : { "$oid" : "5f8fdeb7aafb73522b98dfcb" }, "name" : "admin", "pass" : "0192023a7bbd73250516f069df18b500", "check_admin" : true }
+[
+
+    {"_id":{"$oid":"5f9d327aa7d9c509b856a1ff"},"name":"admin","pass":"$2b$10$SCUgYYvGJf2W61XlbvUosObVnZ26/bhTy8YHO9i5QrzmAgSFK8n2q","check_admin":true},
+    
+    {"_id":{"$oid":"5f9d3326a7d9c509b856a201"},"name":"quanghung99","pass":"$2b$10$OrJ4hi.wh2uKUy2Vn5UwG.xxkmK9ANw7SMQo.a4hV2snTfvwd32o6","check_admin":false},
+    
+    {"_id":{"$oid":"5f9d3326a7d9c509b856a202"},"name":"vanhoa99","pass":"$2b$10$OrJ4hi.wh2uKUy2Vn5UwG.xxkmK9ANw7SMQo.a4hV2snTfvwd32o6","check_admin":false},
+
+    {"_id":{"$oid":"5f9d3326a7d9c509b856a203"},"name":"nguyenhong99","pass":"$2b$10$OrJ4hi.wh2uKUy2Vn5UwG.xxkmK9ANw7SMQo.a4hV2snTfvwd32o6","check_admin":false},
+
+    {"_id":{"$oid":"5f9d3326a7d9c509b856a201"},"name":"vietanh99","pass":"$2b$10$OrJ4hi.wh2uKUy2Vn5UwG.xxkmK9ANw7SMQo.a4hV2snTfvwd32o6","check_admin":false},
+
+    {"_id":{"$oid":"5f9d3326a7d9c509b856a201"},"name":"anhtue99","pass":"$2b$10$OrJ4hi.wh2uKUy2Vn5UwG.xxkmK9ANw7SMQo.a4hV2snTfvwd32o6","check_admin":false}
+
+]

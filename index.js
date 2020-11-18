@@ -1,11 +1,15 @@
 var express = require('express');
+var cookieParser = require('cookie-parser')
+var session = require('express-session');
 var app = express();
 var port = 5000;
-
+var userAuthentication = require("./authentication/authentication.user")
+var adminAuthencation = require("./authentication/authentication.admin")
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(cookieParser())
+app.use(session({secret: "Shh, its a secret!"}));
 const Database = require('./models/database');
 
 app.use(express.static('public'));
@@ -21,10 +25,11 @@ app.get('/', (req, res) => {
     res.render('view1');
 });
 
+
 app.use('/login',loginRouter);
-app.use('/user',userRouter);
-app.use('/admin',adminRouter);
-app.use('/comment',commentRouter);
+app.use('/user',userAuthentication.checkSignIn,userRouter);
+app.use('/admin',adminAuthencation.checkSignIn,adminRouter);
+app.use('/comment',userAuthentication.checkSignIn,commentRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);

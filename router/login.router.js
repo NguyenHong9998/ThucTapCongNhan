@@ -25,8 +25,19 @@ router.post('/',(req,res)=>{
                     res.render('./login/loginview',{signup: 'SIGN UP', wrong: 'Mật khẩu không đúng', values: values});
                 }
                 else {
-                    if (kq.name=="admin") res.redirect('/admin');
-                        else res.redirect('/user');
+                    if (kq.name=="admin") {
+                        req.session.admin = {
+                            user:values.name,
+                        }
+                        res.redirect('/admin');
+                    }
+                    else {
+                        req.session.user = {
+                            user:values.name,
+                        }
+                        res.redirect('/user');
+                    }
+                    
                 }
             });
         }

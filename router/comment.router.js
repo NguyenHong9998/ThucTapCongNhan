@@ -11,6 +11,7 @@ router.get('/:id',(req,res)=>{
         }
         else {
             let listComment = kq.comments;
+            console.log("Listcomment =",listComment);
             res.json(listComment);
         }
     });
@@ -19,7 +20,6 @@ router.get('/:id',(req,res)=>{
 });
 router.post('/post',(req,res)=>{
     console.log(req.body);
-    // res.body.data la noi dung comment, ten user lay trong cookie, req.body._id la id cua bai viet
     res.json(null);
 });
 module.exports = router;

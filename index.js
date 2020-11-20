@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(session({
     secret: "kjfdbnkjvnbfdjklbvkljsdbklvjfbdskljvbdskjvbdfksjlbkljbljkbkj",
-    cookie :{maxAge:60000
+    cookie :{maxAge:24 * 60 * 60 * 1000
     }
 }));
 const Database = require('./models/database');

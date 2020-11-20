@@ -29,7 +29,11 @@ for(let i = 0;i<num;i++){
         axios.get('/comment/'+id).then(function(res) {
             let data = res.data;
             data.forEach(element => {
-                light.find('.text-res').append('<p>'+element+'</p>');
+                light.find('.text-res').append('<div class="card">'+
+                ' <div class="card-body"> <p class="card-title font-italic font-weight-light">'+element.name+
+                '</p><h5 class="font-weight-light">'+element.content_comment+
+                '</h5><footer class="blockquote-footer mt-1">'+element.time+'</footer>'+
+                '</div> </div>');
             });
         });
     });

@@ -3,7 +3,8 @@ const { post } = require('./user.router');
 const router = express.Router();
 
 router.get('/:id',(req,res)=>{
-    let id = req.params.id; 
+    let id = req.params.id;
+    console.log(id);
     var postModel = require("../models/post.model");
     postModel.findById(id,(err,kq)=>{
         if (err){

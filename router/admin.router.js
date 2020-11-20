@@ -5,42 +5,53 @@ router.get('/',(req,res)=>{
     var user = {
         name:"Admin"
     };
-    console.log(req.session.user)
-    var list_content = [
-        {
-            _id: "idforAnhTue1111111",
-            name: "Anh Tue",
-            content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,",
-            status:true,
-            time_post:"26/10/2020 13:48:00",
-            id_school:"DUT"   
-        },
-        {
-            _id: "idforAnhTue2222222",
-            name: "Anh Tue 3",
-            content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,",
-            status:true,
-            time_post:"25/10/2020 13:48:00",
-            id_school:"UEH"   
-        },
-        {
-            _id: "idforAnhTue3333333",
-            name: "Anh Tue 22",
-            content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,",
-            status:true,
-            time_post:"25/10/2020 13:48:00",
-            id_school:"FTU"   
+    var list_content = [];
+    var post = require('../models/post.model');
+    post.find({status:false}, (err, kq) => {
+        if (err) {
+        console.log("Loi roi ban oi");
+        res.render('./login/signup');
         }
-    ];
-    res.render('./admin/adminview',{user:user,list:list_content,admin:true});
+        else {
+            kq.forEach(element => {
+              //console.log(element);  
+              let tmp = {
+                _id: element._id,  
+                name: element.name,
+                content: element.content,
+                time_post: element.time_post,
+                id_school: element.id_school
+              }
+              list_content.push(tmp);
+            });
+            res.render('./admin/adminview',{user:user,list:list_content,admin:true});
+        }    
+    });    
 });
 router.get('/add-content/:id',(req,res)=>{
-    let id = req.params.id; //id bai viet can duyet
-    res.send(id); 
+    let id = req.params.id; 
+    var post = require('../models/post.model');
+    post.findByIdAndUpdate(id,{status:true}, function (err, kq) { 
+        if (err){ 
+            console.log(err) 
+        } 
+        else{ 
+            //console.log("Removed User : ", docs); 
+            res.redirect('/admin');
+        } 
+    }); 
 });
 router.get('/del-content/:id',(req,res)=>{
-    let id = req.params.id; // id bai viet can xoa
-    res.send(id); 
+    let id = req.params.id; 
+    var post = require('../models/post.model');
+    post.findByIdAndRemove(id, function (err, kq) { 
+        if (err){ 
+            console.log(err) 
+        } 
+        else{ 
+            res.redirect('/admin');
+        } 
+    }); 
 });
 router.get('/checkuser',(req,res)=>{
     var user = {
@@ -63,7 +74,6 @@ router.get('/checkuser',(req,res)=>{
               //console.log(element);  
               list_content.push(element);
             });
-            console.log
             res.render('./admin/checkuser',{user:user,list:list_content,admin:true});
         }    
     });
@@ -89,7 +99,6 @@ router.get('/deleteuserview',(req,res)=>{
               //console.log(element);  
               list_content.push(element);
             });
-            console.log
             res.render('./admin/listAccount',{user:user,list:list_content,admin:true});
         }    
     });

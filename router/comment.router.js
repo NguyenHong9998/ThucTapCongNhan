@@ -1,5 +1,4 @@
 const express = require('express');
-const { post } = require('./user.router');
 const router = express.Router();
 
 router.get('/:id',(req,res)=>{
@@ -15,9 +14,7 @@ router.get('/:id',(req,res)=>{
             console.log("Listcomment =",listComment);
             res.json(listComment);
         }
-    });
-   
-    
+    });    
 });
 router.post('/post',(req,res)=>{
     console.log(req.body);

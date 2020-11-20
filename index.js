@@ -11,8 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(session({
     secret: "kjfdbnkjvnbfdjklbvkljsdbklvjfbdskljvbdskjvbdfksjlbkljbljkbkj",
-    cookie :{maxAge:24 * 60 * 60 * 1000
-    }
+    cookie :{}
 }));
 const Database = require('./models/database');
 
@@ -33,7 +32,7 @@ app.get('/', (req, res) => {
 app.use('/login',loginRouter);
 app.use('/user',userAuthentication.checkSignIn,userRouter);
 app.use('/admin',adminAuthencation.checkSignIn,adminRouter);
-app.use('/comment',userAuthentication.checkSignIn,commentRouter);
+app.use('/comment',commentRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);

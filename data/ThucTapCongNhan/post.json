@@ -1,1 +1,16 @@
-{ "_id" : { "$oid" : "5f96722e5b609f65cf7bbffe" }, "name" : "nguyenhong99", "content" : "Xin ý kiến về trường đại học Bách Khoa", "status" : true, "time_post" : "26/10/2020 12:30:30", "id_school" : "DUT", "comments" : [ { "name" : "nguyenhong99", "content_comment" : "Trường vip", "time" : "26/10/2020 13:48:00" }, { "name" : "quanghung99", "content_comment" : "Trường nhiều gái xinh", "time" : "26/10/2020 14:48:00" } ] }
+[
+{ "_id" : { "$oid" : "5f96722e5b609f65cf7bbffe" }, "name" : "nguyenhong99", 
+    "content" : "Xin ý kiến về trường đại học Bách Khoa", "status" : true,
+     "time_post" : "26/10/2020 12:30:30", "id_school" : "DUT", "comments" : [ { "name" : "nguyenhong99", "content_comment" : "Trường vip", 
+        "time" : "26/10/2020 13:48:00" }, { "name" : "quanghung99", "content_comment" : "Trường nhiều gái xinh", "time" : "26/10/2020 14:48:00" } ] },
+{ "_id" : { "$oid" : "5f96722e5b609f65cf7bbff2" }, "name" : "vanhoa99", 
+    "content" : "Xin ý kiến về trường đại học Kinh Tế", "status" : true,
+        "time_post" : "18/11/2020 12:30:30", "id_school" : "DUE", "comments" : [ { "name" : "vanhoa99", "content_comment" : "Trường vip", 
+        "time" : "26/10/2020 13:48:00" }, { "name" : "quanghung99", "content_comment" : "Trường nhiều gái xinh", "time" : "26/10/2020 14:48:00" } ] },
+{ "_id" : { "$oid" : "5f96722e5b609f65cf7bbff3" }, "name" : "anhtue99", 
+    "content" : "Xin ý kiến về trường đại học Sư Phạm", "status" : true,
+        "time_post" : "18/11/2020 12:30:30", "id_school" : "DUV", "comments" : [ { "name" : "anhtue99", "content_comment" : "Trường vip", 
+        "time" : "26/10/2020 13:48:00" }, { "name" : "quanghung99", "content_comment" : "Trường nhiều gái xinh", "time" : "26/10/2020 14:48:00" } ] }
+    
+ ]
+        

@@ -35,8 +35,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
-    req.session=null;
-    res.render('view1');
+    req.session.admin=null;
+    req.session.user=null;
+    res.redirect('/');
 });
 
 app.use('/login',loginRouter);

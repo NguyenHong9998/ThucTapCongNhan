@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('',(req,res)=>{
     
-    user = {
+    var user = {
         name: req.session.user.username
     }
 
@@ -16,7 +16,7 @@ router.get('',(req,res)=>{
             res.render('./user/userview');
         }
         else {
-            list_content = kq;
+            var list_content = kq;
             res.render('./user/userview',{user:user,list:list_content});
         }
     });    

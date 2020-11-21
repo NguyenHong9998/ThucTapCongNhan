@@ -95,7 +95,6 @@ router.post('/signup',(req,res)=>{
                 res.render('./login/signup');
                 }
                 else if (kq) {
-                    kt=false;
                     res.render('./login/signup',{ found: 'Tên đăng nhập đã tồn tại', values: values});
                 }
                 else {

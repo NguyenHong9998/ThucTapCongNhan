@@ -8,7 +8,7 @@ router.get('',(req,res)=>{
     }
 
     var postModel = require("../models/post.model");
-    postModel.find((err, kq) => {
+    postModel.find({status:true},(err, kq) => {
         if (err) {
         console.log("Loi roi ban oi");
         }

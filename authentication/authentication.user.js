@@ -13,7 +13,7 @@ var checkSignIn = (req,res,next) => {
 
     }
     else {
-        console.log("Loi roi ban oi");
+        //console.log("Loi roi ban oi");
         res.redirect("/login");
         return;
     }

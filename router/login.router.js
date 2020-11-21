@@ -3,7 +3,13 @@ const router = express.Router();
 var bcrypt = require('bcrypt');
 
 router.get('/',(req,res)=>{
-    res.render('./login/loginview',{signup:"SIGN UP"});
+    if (req.session.admin) {
+        res.redirect('/admin');
+    }
+    else if (req.session.user) {
+        res.redirect('/user');
+    }
+    else res.render('./login/loginview',{signup:"SIGN UP"});
 });
 
 router.post('/',(req,res)=>{
@@ -27,18 +33,31 @@ router.post('/',(req,res)=>{
                 else {
                     if (kq.name=="admin") {
                         req.session.admin = {
-                            username:values.name,
-                            
+                            username:values.name     
                         }
                         res.redirect('/admin');
                     }
                     else {
-                        req.session.user = {
-                            username:values.name,
-                        }
-                        res.redirect('/user');
-                    }
-                    
+                        var user = require('../models/user.model');
+                        user.findOne({name_acc:req.body.name}, (err, kq) => {
+                            if (err) {
+                            console.log("Loi roi ban oi");
+                            res.render('./login/loginview',{signup:"SIGN UP"});
+                            }
+                            else if (!kq) {
+                                res.render('./login/loginview',{signup: 'SIGN UP', notfound: 'Tài khoản không tồn tại', values: values});
+                            }
+                            else if (kq.isChecked==false) {
+                                res.render('./login/loginview',{signup: 'SIGN UP', notfound: 'Tài khoản chưa được phê duyệt', values: values});
+                            }
+                            else {
+                                req.session.user = {
+                                username:values.name
+                                }
+                                res.redirect('/user');
+                            }
+                        });        
+                    }          
                 }
             });
         }
@@ -76,7 +95,6 @@ router.post('/signup',(req,res)=>{
                 res.render('./login/signup');
                 }
                 else if (kq) {
-                    kt=false;
                     res.render('./login/signup',{ found: 'Tên đăng nhập đã tồn tại', values: values});
                 }
                 else {

@@ -10,7 +10,7 @@ block content
 					.alert.alert-danger= error
 			form(name="f1", method="POST")
 				.form-group.row
-					input(class= "form-control" ,type="text",name="name",value=values?values.name:"",placeholder="Full Name").form-control
+					input(class= "form-control" ,type="text",name="fullname",value=values?values.name:"",placeholder="Full Name").form-control
 				.form-group.row
 					input(class= "form-control" ,type="text",name="mail",value=values?values.mail:"",placeholder="Email").form-control
 
@@ -36,10 +36,10 @@ block content
 						h5=found
 				.form-group.row
 			
-					input(class= "form-control" ,type="text",name="pass",value=values?values.pass:"",placeholder="Password").form-control
+					input(class= "form-control" ,type="password",name="pass",value=values?values.pass:"",placeholder="Password").form-control
 
 				.form-group.row
-					input(class= "form-control" ,type="text",name="retype_pass",value=values?values.pass:"",placeholder="Confirm your password").form-control
+					input(class= "form-control" ,type="password",name="retype_pass",value=values?values.pass:"",placeholder="Confirm your password").form-control
 
 				.row
 					.col-sm-3

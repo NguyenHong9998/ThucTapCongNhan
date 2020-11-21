@@ -11,7 +11,7 @@ router.get('/:id',(req,res)=>{
         }
         else {
             let listComment = kq.comments;
-            console.log("Listcomment =",listComment);
+            //console.log("Listcomment =",listComment);
             res.json(listComment);
         }
     });    

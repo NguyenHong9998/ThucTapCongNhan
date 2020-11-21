@@ -25,9 +25,20 @@ const adminRouter = require('./router/admin.router.js');
 const commentRouter = require('./router/comment.router.js');
 
 app.get('/', (req, res) => {
-    res.render('view1');
+    if (req.session.admin) {
+        res.redirect('/admin');
+    }
+    else if (req.session.user) {
+        res.redirect('/user');
+    }
+    else res.render('view1');
 });
 
+app.get('/logout', (req, res) => {
+    req.session.admin=null;
+    req.session.user=null;
+    res.redirect('/');
+});
 
 app.use('/login',loginRouter);
 app.use('/user',userAuthentication.checkSignIn,userRouter);

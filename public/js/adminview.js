@@ -32,9 +32,16 @@ for(let i = 0;i<num;i++){
         light.find('.post-com').click(function(){
             let text = light.find('.text-com').val();
             if(text){
-                axios.post('/comment/post',{data:text,_id:id}).then();
-                light.find('.text-res').append("<p>ADMIN:  "+text+"</p>"); // user ADMIN
+                axios.post('/comment/post',{data:text,_id:id}).then(function(res) {
+                    let element = res.data;
+                    light.find('.text-res').append('<div class="card">'+
+                        ' <div class="card-body"> <p class="card-title font-italic font-weight-light">'+element.name+
+                        '</p><h5 class="font-weight-light">'+element.content_comment+
+                        '</h5><footer class="blockquote-footer mt-1">'+element.time+'</footer>'+
+                        '</div> </div>');
+                });
                 light.find('.text-com').attr("value","");
+                text=null;
             }
         });
         light.find('.text-res').empty();

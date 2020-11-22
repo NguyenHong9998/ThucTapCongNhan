@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mongoose": "^5.10.11",
+    "node-get-time": "^1.1.0",
     "pug": "^3.0.0"
   },
   "devDependencies": {

@@ -7,7 +7,7 @@ router.get('/',(req,res)=>{
     };
     var list_content = [];
     var post = require('../models/post.model');
-    post.find({status:false}, (err, kq) => {
+    post.find({status:false}, null, {sort: {time_post:-1}}, (err, kq) => {
         if (err) {
         console.log("Loi roi ban oi");
         res.render('./login/signup');

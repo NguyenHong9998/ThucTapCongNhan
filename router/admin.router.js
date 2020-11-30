@@ -28,6 +28,34 @@ router.get('/',(req,res)=>{
         }    
     });    
 });
+router.get('/checkpost',(req,res)=>{
+    var user = {
+        name:"Admin"
+    };
+    var list_content = [];
+    var post = require('../models/post.model');
+    post.find({status:true}, null, {sort: {time_post:-1}}, (err, kq) => {
+        if (err) {
+        console.log("Loi roi ban oi");
+        res.render('./login/signup');
+        }
+        else {
+            kq.forEach(element => {
+              //console.log(element);  
+              let tmp = {
+                _id: element._id,  
+                name: element.name,
+                content: element.content,
+                time_post: element.time_post,
+                id_school: element.id_school
+              }
+              list_content.push(tmp);
+            });
+            res.render('./admin/adminview1',{user:user,list:list_content,admin:true});
+        }    
+    });    
+});
+
 router.get('/add-content/:id',(req,res)=>{
     let id = req.params.id; 
     var post = require('../models/post.model');

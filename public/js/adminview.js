@@ -29,10 +29,28 @@ for(let i = 0;i<num;i++){
         });
     });
     con.find('.com-but').click(function(){
+        light.find('.text-res').empty();
+        light.find('.com-name').html(user);
+        light.find('.com-date').html(date);
+        light.find('.com-school').html(school);
+        light.show();
+        light.removeClass('animate__rotateOutDownLeft');
+        light.addClass('animate__rotateInDownLeft');
+        id2=id;
+        axios.get('/comment/'+id).then(function(res) {
+            let data = res.data;
+            data.forEach(element => {
+                light.find('.text-res').append('<div class="card">'+
+                ' <div class="card-body"> <p class="card-title font-italic font-weight-light">'+element.name+
+                '</p><h5 class="font-weight-light">'+element.content_comment+
+                '</h5><footer class="blockquote-footer mt-1">'+element.time+'</footer>'+
+                '</div> </div>');
+            });
+        });
         light.find('.post-com').click(function(){
             let text = light.find('.text-com').val();
             if(text){
-                axios.post('/comment/post',{data:text,_id:id}).then(function(res) {
+                axios.post('/comment/post',{data:text,_id:id2}).then(function(res) {
                     let element = res.data;
                     light.find('.text-res').append('<div class="card">'+
                         ' <div class="card-body"> <p class="card-title font-italic font-weight-light">'+element.name+
@@ -43,23 +61,6 @@ for(let i = 0;i<num;i++){
                 light.find('.text-com').attr("value","");
                 text=null;
             }
-        });
-        light.find('.text-res').empty();
-        light.find('.com-name').html(user);
-        light.find('.com-date').html(date);
-        light.find('.com-school').html(school);
-        light.show();
-        light.removeClass('animate__rotateOutDownLeft');
-        light.addClass('animate__rotateInDownLeft');
-        axios.get('/comment/'+id).then(function(res) {
-            let data = res.data;
-            data.forEach(element => {
-                light.find('.text-res').append('<div class="card">'+
-                ' <div class="card-body"> <p class="card-title font-italic font-weight-light">'+element.name+
-                '</p><h5 class="font-weight-light">'+element.content_comment+
-                '</h5><footer class="blockquote-footer mt-1">'+element.time+'</footer>'+
-                '</div> </div>');
-            });
         });
     });
 }

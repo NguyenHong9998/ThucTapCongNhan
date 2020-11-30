@@ -4,7 +4,7 @@ const time = require('node-get-time');
 
 router.get('/:id',(req,res)=>{
     let id = req.params.id;
-    //console.log(id);
+    console.log(id);
     var postModel = require("../models/post.model");
     postModel.findById(id,(err,kq)=>{
         if (err){
@@ -18,6 +18,8 @@ router.get('/:id',(req,res)=>{
     });    
 });
 router.post('/post',(req,res)=>{
+    console.log(req.body._id);
+    console.log(req.body.data);
     var name;
     if (req.session.admin) {
         name="Admin";

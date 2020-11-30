@@ -28,16 +28,18 @@ block content
                     .col-sm-4
                     .col-sm-3.row
                         label(for="school").col-sm-3.mt-1 FOR
-                        input(type="text",placeholder="DUT?").form-control.col-sm-9#school
+                        input(name="school",type="text",placeholder="DUT?").form-control.col-sm-9#school
             .card-body
                 .row
                     .col-sm-12
-                        textarea(rows="5",placeholder="How are you today?").form-control
+                        textarea(name="post",rows="5",placeholder="How are you today?").form-control
                 p
                 .row
                     .col-sm-10
                     .col-sm-2
-                        button.btn.btn-info POST                                
+                        button.btn.btn-info POST      
+                if alert
+                    H4="Bạn đã gửi bài đăng thành công, xin đợi admin phê duyệt!"                                               
     if list
         each con in list
             div.card.border-dark.mt-5.content

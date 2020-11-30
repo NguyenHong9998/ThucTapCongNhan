@@ -29,6 +29,21 @@ for(let i = 0;i<num;i++){
         });
     });
     con.find('.com-but').click(function(){
+        light.find('.post-com').click(function(){
+            let text = light.find('.text-com').val();
+            if(text){
+                axios.post('/comment/post',{data:text,_id:id}).then(function(res) {
+                    let element = res.data;
+                    light.find('.text-res').append('<div class="card">'+
+                        ' <div class="card-body"> <p class="card-title font-italic font-weight-light">'+element.name+
+                        '</p><h5 class="font-weight-light" style="font-family: Helvetica,Arial, sans-serif;">'+element.content_comment+
+                        '</h5><footer class="blockquote-footer mt-1">'+element.time+'</footer>'+
+                        '</div> </div>');
+                });
+                light.find('.text-com').attr("value","");
+                text=null;
+            }
+        });
         light.find('.text-res').empty();
         light.find('.com-name').html(user);
         light.find('.com-date').html(date);
@@ -42,7 +57,7 @@ for(let i = 0;i<num;i++){
             data.forEach(element => {
                 light.find('.text-res').append('<div class="card">'+
                 ' <div class="card-body"> <p class="card-title font-italic font-weight-light">'+element.name+
-                '</p><h5 class="font-weight-light">'+element.content_comment+
+                '</p><h5 class="font-weight-light" style="font-family: Helvetica,Arial, sans-serif;">'+element.content_comment+
                 '</h5><footer class="blockquote-footer mt-1">'+element.time+'</footer>'+
                 '</div> </div>');
             });

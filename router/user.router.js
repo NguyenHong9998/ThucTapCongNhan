@@ -24,13 +24,10 @@ router.get('',(req,res)=>{
 });
 
 router.post("/post",(req,res) =>{
-    console.log(req.body);
-    console.log("user=", req.session.user.username);
-    time = require("../myModule/time").getTime();
-    console.log("Time =",time);
-    res.send("post");
+  
     const myPost = {
         name : req.session.user.username,
+        content : req.body.post,
         status: false,
         time_post :  require("../myModule/time").getTime(),
         id_school : req.body.school,
@@ -38,12 +35,14 @@ router.post("/post",(req,res) =>{
 
         }]
     }
+    console.log("post =",myPost)
     
     //insert myPost
     postModel.create(myPost, function (err, small) {
         if (err) return handleError(err);
         console.log(small);
       });
+    res.redirect("/user");
 })
 
 module.exports = router;

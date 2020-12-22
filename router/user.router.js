@@ -23,6 +23,50 @@ router.get('',(req,res)=>{
     
 });
 
+router.post('/search',(req,res)=>{
+    
+    var user = {
+        name: req.session.user.username
+    }
+
+    var condition = {
+        status : true,
+    }
+
+    let FilterBy = req.body.FilterBy 
+    let KeyWord = ".*"+req.body.KeyWord + ".*"
+
+    if (KeyWord.length>0){
+    switch(FilterBy) {
+        case 'School':
+          condition.id_school = { $regex: KeyWord }
+          break;
+        case 'User':
+          condition.name = { $regex: KeyWord }
+          break;
+        case 'Content':
+          condition.content = { $regex: KeyWord }
+        default:
+            
+      }
+    }
+   
+    postModel.find(condition,(err, kq) => {
+        if (err) {
+        console.log("Loi roi ban oi");
+        }
+        else if (!kq) {
+            res.render('./user/userview');
+        }
+        else {
+            var list_content = kq;
+            console.log("kq=",kq);
+            res.render('./user/userview',{user:user,list:list_content});
+        }
+    });    
+    
+});
+
 router.post("/post",(req,res) =>{
   
     const myPost = {
@@ -40,7 +84,7 @@ router.post("/post",(req,res) =>{
     //insert myPost
     postModel.create(myPost, function (err, small) {
         if (err) return handleError(err);
-        console.log(small);
+        console.log("small =",small);
       });
     res.redirect("/user");
 })

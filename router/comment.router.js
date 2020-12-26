@@ -26,9 +26,9 @@ router.post('/post',(req,res)=>{
     }
     else name=req.session.user.username;
     var time_now;
-    time.gettime(function(res){
-        time_now=res.dateTime;
-    });
+    var d = new Date();
+    a = d.toLocaleString('en-US', { timeZone: 'America/New_York' });
+    time_now = a;
     var comment={
         name: name,
         content_comment: req.body.data,

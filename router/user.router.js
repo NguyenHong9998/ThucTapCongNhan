@@ -73,9 +73,13 @@ router.post('/search',(req,res)=>{
 
 router.post("/post",(req,res) =>{
     var time_now;
-    time.gettime(function(res){
-        time_now=res.dateTime;
-    });
+    var d = new Date();
+    a = d.toLocaleString('en-US', { timeZone: 'America/New_York' })
+
+    // time.gettime(function(res){
+    //     time_now=res.dateTime;
+    // });
+    time_now = a;
     const myPost = {
         name: req.session.user.username,
         content: req.body.post,

@@ -15,21 +15,23 @@
 }
 .box-header{
 	width: 75%;
+	color: black;
 	margin: auto;
 	border-radius: 20px;
-	background-color: rgba(255, 255, 255, .1);  
+	background-color: rgba(32, 29, 29, 0.1);  
 	backdrop-filter: blur(5px);
+	padding-bottom: 20px;
+	padding-top: 20px;
 }
 .header{
-	background-image:linear-gradient(to bottom, transparent 0%, black 100%), url(../../img/back.jpg);
-	background-size: cover;
 	width: 122%;
-	height: 80%;
+	height: 40%;
 	margin-left: -11%;
 	padding-top: 15%;
+	border-radius: 50px;
 }
 .for-back-img{
-	background-image:url(../../img/back4.jpg);
+	background-image:url(../../img/back.jpg);
 	background-size: cover;
 }
 .put-com-session{

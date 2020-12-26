@@ -81,6 +81,18 @@ router.get('/del-content/:id',(req,res)=>{
         } 
     }); 
 });
+router.get('/del-content1/:id',(req,res)=>{
+    let id = req.params.id; 
+    var post = require('../models/post.model');
+    post.findByIdAndRemove(id, function (err, kq) { 
+        if (err){ 
+            console.log(err) 
+        } 
+        else{ 
+            res.redirect("/admin/checkpost")
+        } 
+    }); 
+});
 router.get('/checkuser',(req,res)=>{
     var user = {
         name:"Admin"
